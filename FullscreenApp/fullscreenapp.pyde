@@ -1,9 +1,10 @@
 focus_controller = 0
 wantmenuloaded = 1
 wanttasksloaded = 0
-timeractive = 1
+timeractive = 0
 starttime = (millis()/1000) + 60
 timeleft = 0
+task1completed = 0
 
 def loadmenu():
     TopLeft = "Productivity Manager Enterprise V3"
@@ -39,6 +40,7 @@ def loadmenu():
 def loadTasks():
     global timeractive
     global timeleft
+    global task1completed
     shakemodifier = 0
     
     if timeractive == 1:
@@ -73,6 +75,8 @@ def loadTasks():
     rect(width/2-150 + random(-shakemodifier, shakemodifier), height/2+100 + random(-shakemodifier, shakemodifier), 300, 50, 7)
     
     Task1 = "Task 1"
+    if task1completed == 1 and timeractive == 0:
+        Task1 = "COMPLETED"
     fill(69,69,69)
     textSize(32)
     textAlign(CENTER)
@@ -99,7 +103,23 @@ def loadTasks():
     text(Task3, width/2-150 + random(-shakemodifier, shakemodifier), height/2-100 + random(-shakemodifier, shakemodifier), 300, 50)
     
 def task_1():
-    print("task1")
+    word = loadImage("cheese screenshot.png")
+    image(word, width/2-75, height/2-200, 150, 150)
+    
+    question = "Fill in the Blank" 
+    fill(255, 255, 255) 
+    textSize(25)
+    textAlign(CENTER)
+    text(question, width/2-150, height/2, 300, 150)
+    
+    letter1 = loadImage("letterE.png")
+    image(letter1, width/2-175, height/2 + 150, 50, 50)
+    
+    letter2 = loadImage("r.png") 
+    image(letter2, width/2-25, height/2 + 150, 50, 50)
+    
+    letter3 = loadImage("a.png") 
+    image(letter3, width/2+125, height/2 + 150, 50, 50)
     
 def setup():
     fullScreen()
@@ -117,6 +137,7 @@ def draw():
         background(200,200,180)
     
     global focus_controller
+    global task1completed
     if (focus_controller == 0):#menu
         loadmenu()
         if mousePressed:
@@ -126,13 +147,18 @@ def draw():
         loadTasks()
         if mousePressed:
             if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 150)) and (mouseY > (height/2 + 100))):
-                focus_controller = 2
+                if task1completed == 0:
+                    focus_controller = 2
             elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 50)) and (mouseY > (height/2))):
                 focus_controller = 3
             elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 -50)) and (mouseY > (height/2 - 100))):
                 focus_controller = 4
     elif (focus_controller == 2):#tasks:
         task_1()
+        if mousePressed:
+            if ((mouseX > (width/2-175)) and (mouseX < (width/2-125)) and (mouseY < (height/2 + 200)) and (mouseY > (height/2 + 150))):
+                focus_controller = 1
+                task1completed = 1
     elif (focus_controller == 3):
         task_1()
     elif (focus_controller == 4):
