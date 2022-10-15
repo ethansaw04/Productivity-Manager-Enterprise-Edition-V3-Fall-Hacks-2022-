@@ -1,3 +1,4 @@
+focus_controller = 0
 menuloaded = 0
 wantmenuloaded = 1
 tasksloaded = 0
@@ -82,12 +83,34 @@ def loadTasks():
     
     tasksloaded = 1
     
+def task_1():
+    print("task1")
+    
 def setup():
     fullScreen()
-    background(200,200,180)
     #loadmenu()
     loadTasks()
     
+def draw():
+    global focus_controller
+    background(200,200,180)
+    if (focus_controller == 0):#menu
+        load_menu()
+    elif (focus_controller == 1):#tasks selector
+        loadTasks()
+    elif (focus_controller == 2):#tasks:
+        task_1()
+    elif (focus_controller == 3):
+        task_1()
+    elif (focus_controller == 4):
+        task_1()
+    elif (focus_controller == 5):
+        task_1()
+    elif (focus_controller == 6):
+        task_1()
+    else:
+        print("Error")
+        
 # def draw():
 #     if mousePressed:
 #         if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 200)) and (mouseY > (height/2))):
