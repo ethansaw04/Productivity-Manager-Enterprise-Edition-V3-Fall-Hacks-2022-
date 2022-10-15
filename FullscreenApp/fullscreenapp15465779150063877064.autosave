@@ -1,9 +1,6 @@
 focus_controller = 0
 wantmenuloaded = 1
 wanttasksloaded = 0
-timeractive = 1
-starttime = (millis()/1000) + 60
-timeleft = 0
 
 def loadmenu():
     TopLeft = "Productivity Manager Enterprise V3"
@@ -37,26 +34,6 @@ def loadmenu():
     text(LogoText, width/2-150, height/2+300, 300, 50)
     
 def loadTasks():
-    global timeractive
-    global timeleft
-    shakemodifier = 0
-    
-    if timeractive == 1:
-        shakemodifier = 1.1 ** (60-timeleft)
-        fill(69,69,69)
-        noStroke()
-        rect(width/2-50, height/2-300, 100, 50, 7)
-        
-        fill(169,89,89)
-        textSize(32)
-        textAlign(CENTER)
-        text(str(timeleft), width/2-150, height/2-300, 300, 50)
-        
-        for i in range(int(1.15**(60-timeleft))):
-            fill(random(0,255),random(0,100),random(0,100))
-            noStroke()
-            rect(random(0,width), random(0,height), random(4,10), random(4,10))
-    
     TopLeft = "Productivity Manager Enterprise V3"
     fill(69,69,69)
     textSize(20)
@@ -70,33 +47,33 @@ def loadTasks():
     
     fill(255,255,255)
     noStroke()
-    rect(width/2-150 + random(-shakemodifier, shakemodifier), height/2+100 + random(-shakemodifier, shakemodifier), 300, 50, 7)
+    rect(width/2-150, height/2+100, 300, 50, 7)
     
     Task1 = "Task 1"
     fill(69,69,69)
     textSize(32)
     textAlign(CENTER)
-    text(Task1, width/2-150 + random(-shakemodifier, shakemodifier), height/2+100 + random(-shakemodifier, shakemodifier), 300, 50)    
+    text(Task1, width/2-150, height/2+100, 300, 50)    
     
     fill(255,255,255)
     noStroke()
-    rect(width/2-150 + random(-shakemodifier, shakemodifier), height/2 + random(-shakemodifier, shakemodifier), 300, 50, 7)
+    rect(width/2-150, height/2, 300, 50, 7)
     
     Task2 = "Task 2"
     fill(69,69,69)
     textSize(32)
     textAlign(CENTER)
-    text(Task2, width/2-150 + random(-shakemodifier, shakemodifier), height/2 + random(-shakemodifier, shakemodifier), 300, 50)
+    text(Task2, width/2-150, height/2, 300, 50)
     
     fill(255,255,255)
     noStroke()
-    rect(width/2-150 + random(-shakemodifier, shakemodifier), height/2-100 + random(-shakemodifier, shakemodifier), 300, 50, 7)
+    rect(width/2-150, height/2-100, 300, 50, 7)
     
     Task3 = "Task 3"
     fill(69,69,69)
     textSize(32)
     textAlign(CENTER)
-    text(Task3, width/2-150 + random(-shakemodifier, shakemodifier), height/2-100 + random(-shakemodifier, shakemodifier), 300, 50)
+    text(Task3, width/2-150, height/2-100, 300, 50)
     
 def task_1():
     print("task1")
@@ -107,16 +84,8 @@ def setup():
     #loadTasks()
     
 def draw():
-    global timeractive
-    global starttime
-    global timeleft
-    if timeractive == 1:
-        timeleft = max(0, starttime - millis()/1000)
-        background(200,200-(120-timeleft*2),180-(120-timeleft*2))
-    else:
-        background(200,200,180)
-    
     global focus_controller
+    background(200,200,180)
     if (focus_controller == 0):#menu
         loadmenu()
         if mousePressed:
