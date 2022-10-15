@@ -95,11 +95,11 @@ def draw():
         loadTasks()
         if mousePressed:
             if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 150)) and (mouseY > (height/2 + 100))):
-                #focus_controller = 2
+                focus_controller = 2
             elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 50)) and (mouseY > (height/2))):
-                #focus_controller = 3
+                focus_controller = 3
             elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 -50)) and (mouseY > (height/2 - 100))):
-                #focus_controller = 4
+                focus_controller = 4
     elif (focus_controller == 2):#tasks:
         task_1()
     elif (focus_controller == 3):
