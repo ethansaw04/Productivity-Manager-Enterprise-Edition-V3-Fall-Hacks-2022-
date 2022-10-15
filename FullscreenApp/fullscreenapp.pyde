@@ -1,11 +1,8 @@
 focus_controller = 0
-menuloaded = 0
 wantmenuloaded = 1
-tasksloaded = 0
 wanttasksloaded = 0
 
 def loadmenu():
-    global menuloaded
     TopLeft = "Productivity Manager Enterprise V3"
     fill(69,69,69)
     textSize(20)
@@ -36,10 +33,7 @@ def loadmenu():
     textAlign(CENTER)
     text(LogoText, width/2-150, height/2+150, 300, 50)
     
-    menuloaded = 1
-    
 def loadTasks():
-    global tasksloaded
     TopLeft = "Productivity Manager Enterprise V3"
     fill(69,69,69)
     textSize(20)
@@ -81,8 +75,6 @@ def loadTasks():
     textAlign(CENTER)
     text(Task3, width/2-150, height/2-100, 300, 50)
     
-    tasksloaded = 1
-    
 def task_1():
     print("task1")
     
@@ -95,9 +87,19 @@ def draw():
     global focus_controller
     background(200,200,180)
     if (focus_controller == 0):#menu
-        load_menu()
+        loadmenu()
+        if mousePressed:
+            if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 200)) and (mouseY > (height/2))):
+                focus_controller = 1
     elif (focus_controller == 1):#tasks selector
         loadTasks()
+        if mousePressed:
+            if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 400)) and (mouseY > (height/2 + 100))):
+                focus_controller = 2
+            elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 300)) and (mouseY > (height/2))):
+                focus_controller = 3
+            elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 200)) and (mouseY > (height/2 - 100))):
+                focus_controller = 4
     elif (focus_controller == 2):#tasks:
         task_1()
     elif (focus_controller == 3):
@@ -110,10 +112,5 @@ def draw():
         task_1()
     else:
         print("Error")
-        
-# def draw():
-#     if mousePressed:
-#         if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 200)) and (mouseY > (height/2))):
-#             background(200,200,180)
         
     
