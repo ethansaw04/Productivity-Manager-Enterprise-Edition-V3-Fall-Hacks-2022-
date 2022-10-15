@@ -1,4 +1,10 @@
+menuloaded = 0
+wantmenuloaded = 1
+tasksloaded = 0
+wanttasksloaded = 0
+
 def loadmenu():
+    global menuloaded
     TopLeft = "Productivity Manager Enterprise V3"
     fill(69,69,69)
     textSize(20)
@@ -29,7 +35,10 @@ def loadmenu():
     textAlign(CENTER)
     text(LogoText, width/2-150, height/2+150, 300, 50)
     
+    menuloaded = 1
+    
 def loadTasks():
+    global tasksloaded
     TopLeft = "Productivity Manager Enterprise V3"
     fill(69,69,69)
     textSize(20)
@@ -43,33 +52,35 @@ def loadTasks():
     
     fill(255,255,255)
     noStroke()
-    rect(width/2-225, height/2+100, 300, 50, 7)
+    rect(width/2-150, height/2+100, 300, 50, 7)
     
     Task1 = "Task 1"
     fill(69,69,69)
     textSize(32)
     textAlign(CENTER)
-    text(Task1, width/2-225, height/2+100, 300, 50)    
+    text(Task1, width/2-150, height/2+100, 300, 50)    
     
     fill(255,255,255)
     noStroke()
-    rect(width/2-225, height/2, 300, 50, 7)
+    rect(width/2-150, height/2, 300, 50, 7)
     
     Task2 = "Task 2"
     fill(69,69,69)
     textSize(32)
     textAlign(CENTER)
-    text(Task2, width/2-225, height/2, 300, 50)
+    text(Task2, width/2-150, height/2, 300, 50)
     
     fill(255,255,255)
     noStroke()
-    rect(width/2-225, height/2-100, 300, 50, 7)
+    rect(width/2-150, height/2-100, 300, 50, 7)
     
     Task3 = "Task 3"
     fill(69,69,69)
     textSize(32)
     textAlign(CENTER)
-    text(Task3, width/2-225, height/2-100, 300, 50)
+    text(Task3, width/2-150, height/2-100, 300, 50)
+    
+    tasksloaded = 1
     
 def setup():
     fullScreen()
