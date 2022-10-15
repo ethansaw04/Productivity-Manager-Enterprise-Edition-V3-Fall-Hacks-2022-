@@ -25,13 +25,13 @@ def loadmenu():
     
     fill(255,255,255)
     noStroke()
-    rect(width/2-150, height/2+150, 300, 50)
+    rect(width/2-150, height/2+300, 300, 50)
     
     LogoText = "Click to get started!"
     fill(69,69,69)
     textSize(32)
     textAlign(CENTER)
-    text(LogoText, width/2-150, height/2+150, 300, 50)
+    text(LogoText, width/2-150, height/2+300, 300, 50)
     
 def loadTasks():
     TopLeft = "Productivity Manager Enterprise V3"
@@ -81,7 +81,7 @@ def task_1():
 def setup():
     fullScreen()
     #loadmenu()
-    loadTasks()
+    #loadTasks()
     
 def draw():
     global focus_controller
@@ -89,17 +89,17 @@ def draw():
     if (focus_controller == 0):#menu
         loadmenu()
         if mousePressed:
-            if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 200)) and (mouseY > (height/2))):
+            if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 350)) and (mouseY > (height/2))):
                 focus_controller = 1
     elif (focus_controller == 1):#tasks selector
         loadTasks()
         if mousePressed:
-            if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 400)) and (mouseY > (height/2 + 100))):
-                focus_controller = 2
-            elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 300)) and (mouseY > (height/2))):
-                focus_controller = 3
-            elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 200)) and (mouseY > (height/2 - 100))):
-                focus_controller = 4
+            if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 150)) and (mouseY > (height/2 + 100))):
+                #focus_controller = 2
+            elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 50)) and (mouseY > (height/2))):
+                #focus_controller = 3
+            elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 -50)) and (mouseY > (height/2 - 100))):
+                #focus_controller = 4
     elif (focus_controller == 2):#tasks:
         task_1()
     elif (focus_controller == 3):
