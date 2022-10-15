@@ -36,7 +36,7 @@ def setup():
     
 def draw():
     if mousePressed:
-        if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 175)) and (mouseY > (height/2 + 125))):
+        if ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 200)) and (mouseY > (height/2))):
             background(200,200,180)
         
     
