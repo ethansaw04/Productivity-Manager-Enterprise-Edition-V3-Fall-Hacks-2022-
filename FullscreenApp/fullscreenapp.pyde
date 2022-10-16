@@ -80,19 +80,6 @@ def loadTasks():
     
     if timeractive == 1:
         shakemodifier = 1.1 ** (60-timeleft)
-        fill(69,69,69)
-        noStroke()
-        rect(width/2-50, height/2-300, 100, 50, 7)
-        
-        fill(169,89,89)
-        textSize(32)
-        textAlign(CENTER)
-        text(str(timeleft), width/2-150, height/2-300, 300, 50)
-        
-        for i in range(int(1.15**(60-timeleft))):
-            fill(random(0,255),random(0,100),random(0,100))
-            noStroke()
-            rect(random(0,width), random(0,height), random(4,10), random(4,10))
     
     TopLeft = "Productivity Manager Enterprise V3"
     fill(69,69,69)
@@ -191,6 +178,20 @@ def draw():
     if timeractive == 1:
         timeleft = max(0, starttime - millis()/1000)
         background(200,200-(120-timeleft*2),180-(120-timeleft*2))
+        
+        fill(69,69,69)
+        noStroke()
+        rect(width/2-50, height/2-300, 100, 50, 7)
+        
+        fill(169,89,89)
+        textSize(32)
+        textAlign(CENTER)
+        text(str(timeleft), width/2-150, height/2-300, 300, 50)
+        
+        for i in range(int(1.15**(60-timeleft))):
+            fill(random(0,255),random(0,100),random(0,100))
+            noStroke()
+            rect(random(0,width), random(0,height), random(4,10), random(4,10))
     else:
         background(200,200,180)
     
