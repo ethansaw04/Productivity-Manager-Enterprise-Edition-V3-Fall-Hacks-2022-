@@ -5,6 +5,7 @@ timeractive = 0
 starttime = (millis()/1000) + 60
 timeleft = 0
 task1completed = 0
+task2completed = 0
 task3completed = 0
 
 can_type = False
@@ -22,15 +23,21 @@ def task_2():
     global keydown
     line(mouseX, mouseY, mouseX+80, mouseY+80)
     if mousePressed:
-        if (mouseX>width/3 and mouseY>height/2 and mouseX<(width/3)+600 and mouseY<(height/2)+80):
+        if (mouseX>width/2-300 and mouseY>height/2+150 and mouseX<(width/3)+300 and mouseY<(height/2)+230):
             fill(0,255,0)
         print(mouseX," ",mouseY)
     else:
         fill(255)
-    rect(width/3,height/2,600,80,7)
+    rect(width/2-300,height/2+150,600,80,7)
     textSize(32)
     fill(0)
-    text(typed_text, (width/3), (height/2)+40)
+    text(typed_text, (width/2 - 300), (height/2)+50, 600, 50)
+    
+    question = "Write ln 9000 = x in exponential form." 
+    fill(255, 255, 255) 
+    textSize(25)
+    textAlign(CENTER)
+    text(question, width/2-150, height/2-150, 300, 150)
 
 def loadmenu():
     TopLeft = "Productivity Manager Enterprise V3"
@@ -67,6 +74,8 @@ def loadTasks():
     global timeractive
     global timeleft
     global task1completed
+    global task2completed
+    global task3completed
     shakemodifier = 0
     
     if timeractive == 1:
@@ -113,6 +122,8 @@ def loadTasks():
     rect(width/2-150 + random(-shakemodifier, shakemodifier), height/2 + random(-shakemodifier, shakemodifier), 300, 50, 7)
     
     Task2 = "Task 2"
+    if task2completed == 1 and timeractive == 0:
+        Task2 = "COMPLETED"
     fill(69,69,69)
     textSize(32)
     textAlign(CENTER)
@@ -185,8 +196,14 @@ def draw():
     
     global focus_controller
     global task1completed
+    global task2completed
     global task3completed
     global can_type
+    
+    if task1completed == 1 and task2completed == 1 and task3completed == 1 and timeractive == 0:
+        starttime = (millis()/1000) + 60
+        timeractive = 1
+        
     if (focus_controller == 0):#menu
         loadmenu()
         if mousePressed:
@@ -199,7 +216,8 @@ def draw():
                 if task1completed == 0:
                     focus_controller = 2
             elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 50)) and (mouseY > (height/2))):
-                focus_controller = 3
+                if task2completed == 0:
+                    focus_controller = 3
             elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 -50)) and (mouseY > (height/2 - 100))):
                 if task3completed == 0:
                     focus_controller = 4
@@ -228,13 +246,15 @@ def mouseClicked():
     global can_type
     global focus_controller
     if (focus_controller == 3):
-        if (mouseX>width/3 and mouseY>height/2 and mouseX<(width/3)+600 and mouseY<(height/2)+80):
+        if (mouseX>width/2-300 and mouseY>height/2+150 and mouseX<(width/3)+300 and mouseY<(height/2)+230):
             can_type = not can_type
             print("clicked ",can_type)
         
 def keyTyped():
     global can_type
     global typed_text
+    global task2completed
+    global focus_controller
     if (can_type==True):
         if (key==BACKSPACE):
             typed_text = typed_text[:-1]
@@ -243,6 +263,10 @@ def keyTyped():
         else:
             if len(typed_text)<24:
                 typed_text = typed_text + key
+                if typed_text == "e^x = 9000":
+                    task2completed = 1
+                    focus_controller = 1
+                    draw_text_box_reset
             print(typed_text)
         
     
