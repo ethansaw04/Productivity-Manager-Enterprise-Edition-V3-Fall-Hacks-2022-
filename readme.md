@@ -8,7 +8,7 @@ Productivity Manager Enterprise Edition V3**
 
 **Introduction:**
 
-1.  Our Productivity app allows the user to test mental and neural pathways and build them throughout simple yet complex tasks all in a time frame. Our tasks range from identifying keys words to figuring out math problems. Using a timer throughout the program, it applies pressure to the user to finish and to think through the problems quckly. However, if the user cannot finish these tasks at a certain time frame, our **motivators** will influence the user to do better, before time runs out.... (Feel free for the timer to keep going during the second set of tasks)
+1.  Our Productivity app allows the user to test mental and neural pathways and build them throughout simple yet complex tasks all in a time frame. Our tasks range from identifying keys words to figuring out math problems. Using a timer throughout the program, it applies pressure to the user to finish and to think through the problems quckly. However, if the user cannot finish these tasks at a certain time frame, our **motivators** will influence the user to do better, before time runs out.... (Feel free for the timer to keep going during the second set of tasks) **Epilepsy Warning!!**
     
 2.  _[_6:29 PM_]_
     
@@ -69,4 +69,5 @@ Productivity Manager Enterprise Edition V3**
 		
 
 ![enter image description here](https://lumpology.com/wp-content/uploads/2022/10/Screenshot-from-2022-10-15-17-48-42.png)
+
 
