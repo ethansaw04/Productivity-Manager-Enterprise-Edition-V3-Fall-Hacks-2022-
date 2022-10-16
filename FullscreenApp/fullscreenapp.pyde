@@ -23,7 +23,7 @@ def task_2():
     global keydown
     line(mouseX, mouseY, mouseX+80, mouseY+80)
     if mousePressed:
-        if (mouseX>width/2-300 and mouseY>height/2+150 and mouseX<(width/3)+300 and mouseY<(height/2)+230):
+        if (mouseX>width/2-300 and mouseY>height/2+150 and mouseX<(width/2)+300 and mouseY<(height/2)+230):
             fill(0,255,0)
         print(mouseX," ",mouseY)
     else:
@@ -246,7 +246,7 @@ def mouseClicked():
     global can_type
     global focus_controller
     if (focus_controller == 3):
-        if (mouseX>width/2-300 and mouseY>height/2+150 and mouseX<(width/3)+300 and mouseY<(height/2)+230):
+        if (mouseX>width/2-300 and mouseY>height/2+150 and mouseX<(width/2)+300 and mouseY<(height/2)+230):
             can_type = not can_type
             print("clicked ",can_type)
         
