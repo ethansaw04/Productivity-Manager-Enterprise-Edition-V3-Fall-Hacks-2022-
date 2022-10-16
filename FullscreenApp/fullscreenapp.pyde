@@ -5,6 +5,7 @@ timeractive = 0
 starttime = (millis()/1000) + 60
 timeleft = 0
 task1completed = 0
+task3completed = 0
 
 def loadmenu():
     TopLeft = "Productivity Manager Enterprise V3"
@@ -97,6 +98,8 @@ def loadTasks():
     rect(width/2-150 + random(-shakemodifier, shakemodifier), height/2-100 + random(-shakemodifier, shakemodifier), 300, 50, 7)
     
     Task3 = "Task 3"
+    if task3completed == 1 and timeractive == 0:
+        Task3 = "COMPLETED"
     fill(69,69,69)
     textSize(32)
     textAlign(CENTER)
@@ -113,13 +116,32 @@ def task_1():
     text(question, width/2-150, height/2, 300, 150)
     
     letter1 = loadImage("letterE.png")
-    image(letter1, width/2-175, height/2 + 150, 50, 50)
+    image(letter1, width/2-175, height/2 + 150, 50, 80)
     
     letter2 = loadImage("r.png") 
-    image(letter2, width/2-25, height/2 + 150, 50, 50)
+    image(letter2, width/2-25, height/2 + 150, 50, 30)
     
     letter3 = loadImage("a.png") 
-    image(letter3, width/2+125, height/2 + 150, 50, 50)
+    image(letter3, width/2+125, height/2 + 150, 90, 50)
+    
+def task_3():
+    word = loadImage("wlt.png")
+    image(word, width/2-75, height/2-200, 150, 150)
+    
+    question = "Who is this?" 
+    fill(255, 255, 255) 
+    textSize(25)
+    textAlign(CENTER)
+    text(question, width/2-150, height/2, 300, 150)
+    
+    letter1 = loadImage("walter1.png")
+    image(letter1, width/2-175, height/2 + 150, 50, 80)
+    
+    letter2 = loadImage("walter2.png") 
+    image(letter2, width/2-25, height/2 + 150, 50, 30)
+    
+    letter3 = loadImage("walter3.png") 
+    image(letter3, width/2+125, height/2 + 150, 90, 50)
     
 def setup():
     fullScreen()
@@ -138,6 +160,7 @@ def draw():
     
     global focus_controller
     global task1completed
+    global task3completed
     if (focus_controller == 0):#menu
         loadmenu()
         if mousePressed:
@@ -152,17 +175,22 @@ def draw():
             elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 + 50)) and (mouseY > (height/2))):
                 focus_controller = 3
             elif ((mouseX > (width/2 - 150)) and (mouseX < (width/2 + 150)) and (mouseY < (height/2 -50)) and (mouseY > (height/2 - 100))):
-                focus_controller = 4
+                if task3completed == 0:
+                    focus_controller = 4
     elif (focus_controller == 2):#tasks:
         task_1()
         if mousePressed:
-            if ((mouseX > (width/2-175)) and (mouseX < (width/2-125)) and (mouseY < (height/2 + 200)) and (mouseY > (height/2 + 150))):
+            if ((mouseX > (width/2-175)) and (mouseX < (width/2-125)) and (mouseY < (height/2 + 230)) and (mouseY > (height/2 + 150))):
                 focus_controller = 1
                 task1completed = 1
     elif (focus_controller == 3):
         task_1()
     elif (focus_controller == 4):
-        task_1()
+        task_3()
+        if mousePressed:
+            if ((mouseX > (width/2-175)) and (mouseX < (width/2-125)) and (mouseY < (height/2 + 230)) and (mouseY > (height/2 + 150))):
+                focus_controller = 1
+                task3completed = 1
     elif (focus_controller == 5):
         task_1()
     elif (focus_controller == 6):
