@@ -375,6 +375,7 @@ def keyTyped():
     global can_type
     global typed_text
     global task2completed
+    global cursed2completed
     global focus_controller
     if (can_type==True):
         if (key==BACKSPACE):
